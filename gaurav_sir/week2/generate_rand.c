@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 // If we use rand() then it will not print random no. everytime
 // So inorder to print randome no. everytime we use seed
