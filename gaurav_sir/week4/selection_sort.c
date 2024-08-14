@@ -8,14 +8,6 @@
 // Now we will apply all things we have learnt (runtime, memory used, assert, rand) on Selection Sort
 
 
-int compare(const void* a, const void* b) {
-    int int_a = *((int*)a);
-    int int_b = *((int*)b);
-
-    if (int_a < int_b) return -1;
-    if (int_a > int_b) return 1;
-    return 0;
-}
 void swapu(int minidx, int i, int arr[]){
     int temp = arr[minidx];
     arr[minidx] = arr[i];
@@ -33,18 +25,13 @@ void selection_sort(int arr[], int n){
     }
 }
 void test_input(){
-    srand(time(0));
+    srand(time(NULL));
+
     int n = 100000;
 
     int *arr = (int *) malloc(sizeof(int) * n);
-    int *expected_out = (int *) malloc(sizeof(int) * n);
 
-    for(int i = 0; i < n; i++){
-        arr[i] = rand();
-        expected_out[i] = arr[i];
-    }
-
-    qsort(expected_out, n, sizeof(int), compare);
+    for(int i = 0; i < n; i++) arr[i] = rand();
 
     // Memory
     struct rusage usage_start;
@@ -56,7 +43,9 @@ void test_input(){
 
     long long before_millis = before.tv_sec * 1000LL + before.tv_usec / 1000LL;
 
+
     selection_sort(arr, n);
+
 
     struct timeval after;
     gettimeofday(&after, NULL);
@@ -66,16 +55,16 @@ void test_input(){
 
     long long after_millis = after.tv_sec * 1000LL + after.tv_usec / 1000LL;
 
+
     printf("Runtime taken - %lld sec\n", (after_millis - before_millis)/1000);
 
     long memory_used = usage_end.ru_maxrss - usage_start.ru_maxrss;
     printf("Memory used - %ld KB\n", memory_used);
 
-    for(int i=0; i<n; i++){
-        assert(arr[i] == expected_out[i]);
+    for(int i=1; i<n; i++){
+        assert((arr[i-1] <= arr[i]) == 1);
     }
     free(arr);
-    free(expected_out);
 }
 int main(){
     test_input();

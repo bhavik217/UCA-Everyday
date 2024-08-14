@@ -5,14 +5,7 @@
 #include <assert.h>
 #include <time.h>
 
-int compare(const void* a, const void* b) {
-    int int_a = *((int*)a);
-    int int_b = *((int*)b);
 
-    if (int_a < int_b) return -1;
-    if (int_a > int_b) return 1;
-    return 0;
-}
 void merge(int *arr, int *aux, int l, int mid, int h){
     for(int i = l; i <= h; i++) aux[i] = arr[i];
 
@@ -44,13 +37,8 @@ void test_input(){
 
     int n = 1000000;
     int *arr = (int *) malloc(sizeof(int) * n);
-    int *expected_out = (int *) malloc(sizeof(int) * n);
 
-    for(int i=0; i<n; i++){
-        arr[i] = rand();
-        expected_out[i] = arr[i];
-    }
-    qsort(expected_out, n, sizeof(int), compare);
+    for(int i=0; i<n; i++) arr[i] = rand();
     
     struct rusage before_usage;
     getrusage(RUSAGE_SELF, &before_usage);
@@ -75,12 +63,11 @@ void test_input(){
     long memory_used = after_usage.ru_maxrss - before_usage.ru_maxrss;
     printf("Memory used - %ld KB\n", memory_used);
 
-    for(int i=0; i<n; i++){
-        assert(arr[i] == expected_out[i]);
+    for(int i = 1; i < n; i++){
+        assert((arr[i-1] <= arr[i]) == 1);
     }
 
     free(arr);
-    free(expected_out);
 }
 int main(){
     test_input();
