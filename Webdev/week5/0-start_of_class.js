@@ -4,47 +4,40 @@ var obj2 = new Object() // Object Constructor
 var obj3 = Object.assign({}, obj2); // Deep Copy
 var obj4 = Object.assign({name : "newName"}, obj2); // First It makes a copy then overwrites values
 
-
 /**
  * 1 - Constructor Functions
  * 2 - Classes
  * 3 - Objects.create()
  */
 
+// Prototypes javaScript object have a special property ProtoType which is either NULL or references to other object
+// By protoTyping object share their properties
 /* -------------------------------------------------------------------------------------- */
 /* _proto_ (starts) */
 
-function student(fName, obtainedMarks) {
 
-    console.log(this); // this refers to the window object
-    
-    this.fNameObj = fName;
-    this.obtMarksObj = obtainedMarks;
-    this.checkResults =  function() {
+// *    *    *    *    *    *
 
-            console.log(this); // this refers to the object that is being created
-            
-            let percentage = ( this.obtMarksObj / maxMarks ) * 100; // this.obt is same as obtainedMarks
-            
-            if(percentage >= 40) {
-                return "Passed";
-            } else {
-                return "Failed";
-        }
-    }
+var obj1 = {
+    name : "bhavik",
+};
+// console(obj.roll); it will give error because roll is not defined
+
+var obj2 = {
+    roll : 217
 }
 
-var student1 = new student("Harshit", 200); 
-console.log(student1.__proto__); // It will give empty if we haven't created a prototype
+console.log(obj1.__proto__); // It will give empty if we haven't created a prototype
 
-student.prototype.college = "Chitkara"; 
-// Prototype is a property of a function that points to an object that is shared among all the instances of the function
-// It is used to add properties and methods to the object
+obj1.__proto__ = obj2;
+console.log(obj1.roll);
 
-student.prototype.maxMarks = 500;
-// Now We don't need to create a maxMarks variable in the function
+// *    *    *    *    *    *
+ 
+obj2.college = "Chitkara";    // To add properties and methods to the object
+obj2.maxMarks = 500;        // Now We don't need to create a maxMarks variable in the function
 
-console.log(student1.__proto__);
-
-/* _proto_ (ends) */
-/* -------------------------------------------------------------------------------------- */
+console.log(obj1.college);
+console.log(obj1.maxMarks);
+console.log(obj1.__proto__);
+console.log(obj2.__proto__);    // It will be NULL
