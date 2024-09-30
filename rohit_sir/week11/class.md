@@ -14,7 +14,7 @@
 ---
 
 # File Handling in C
-# FILE Struct in C
+## FILE Struct in C
 
 ```C
 typedef struct _iobuf
@@ -29,8 +29,9 @@ typedef struct _iobuf
     char *_tmpfname;
 } FILE;
 ```
+I don't know about above struct
 
-#### <u>File Handling Functions</u>
+#### File Handling Functions
 
 - **fopen()** - To Open a File
 ```C
@@ -71,18 +72,11 @@ char *fgets(char *str, int n, FILE *stream);
 ```C
 int fputs(const char *str, FILE *stream);
 ```
-
-#### Some Practices in Class
-
-1. [File 1](file_management.c)
-2. [File 2](file_management_2.c)
-3. [File 3](file_3.c)
-4. [File 4](file_4.c)
-
 ---
+
 ***Homework :-***
 - How it reads escape characters!   VERY IMP.
 - Input - Store it binary
 - Binary - Text
 
-<a href="// https://stackoverflow.com/questions/4459859/where-are-standard-streams-stdin-and-stdout-created#:~:text=In%20Linux%2C%20you%20can%20generally,%2Fself%2Ffd%2F1%20"></a>
+<a href="https://stackoverflow.com/questions/4459859/where-are-standard-streams-stdin-and-stdout-created#:~:text=In%20Linux%2C%20you%20can%20generally,%2Fself%2Ffd%2F1%20">Link to StackOverflow</a>
