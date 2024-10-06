@@ -1,0 +1,6 @@
+H.W
+Use 'method chaining' and 'this' to create 'promise'
+what is cdn(content delivery network)?  VVIMP for interviews
+
+
+
