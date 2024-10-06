@@ -71,3 +71,51 @@
 
 //     fclose(ptr);
 // }
+
+
+
+// Code-5
+// Take input and store it in binary
+
+
+#include <stdio.h>
+
+char *txtToBin(char *input){
+    static char binStr[800] = "";
+    binStr[0] = '\0';
+    for (int i = 0; i < strlen(input); i++) {
+        char bin[9];
+        for (int j = 7; j >= 0; j--) {
+            bin[7 - j] = ((input[i] >> j) & 1) ? '1' : '0';
+        }
+        bin[8] = '\0';
+        strcat(binStr, bin);
+    }
+    return binStr;
+}
+
+int main(){
+    char inp[100];
+
+    FILE *ptr = fopen("binary.bin", "wb");
+    if (ptr == NULL) {
+        printf("Error while opening the file");
+        return 0;
+    }
+
+    if(fgets(inp, sizeof(inp), stdin) != NULL){
+        fprintf(ptr, "%s", txtToBin(inp));
+    }
+    else printf("Error while taking input");
+
+    fclose(ptr);
+}
+
+
+// Code-6
+//
+
+#include <stdio.h>
+int main(){
+    
+}
