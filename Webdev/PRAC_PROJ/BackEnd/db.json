@@ -1,0 +1,19 @@
+{
+    "products" : [
+        {
+            "id" : 1,
+            "name" : "tablet",
+            "color" : "grey"
+        },
+        {
+            "id" : 2,
+            "name" : "mobile",
+            "color" : "black"
+        },
+        {
+            "id" : 3,
+            "name" : "charger",
+            "color" : "white"
+        }
+    ]
+}
